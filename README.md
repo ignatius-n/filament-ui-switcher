@@ -5,7 +5,7 @@
 
 Switch between the available Filament layouts with a customizable UI settings slideover modal accessible from a ⚙️ icon in the topbar.
 
-![Filament UI Switcher Demo Video](https://raw.githubusercontent.com/andreia/filament-ui-switcher/main/docs/demo_video.jpg)
+[![Filament UI Switcher Demo Video](https://raw.githubusercontent.com/andreia/filament-ui-switcher/main/docs/demo_video.jpg)](https://www.youtube.com/watch?v=aEBp4mYrej8)
 
 ## Features
 
