@@ -45,6 +45,9 @@ You can customize the colors, fonts, and more with the config file:
 ```bash
 # Publish config
 php artisan vendor:publish --tag=filament-ui-switcher-config
+
+# Publish translations
+php artisan vendor:publish --tag=filament-ui-switcher-translations
 ```
 
 This will create a `config/ui-switcher.php` file where you can customize:
