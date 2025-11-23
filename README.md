@@ -88,6 +88,12 @@ Customize the color palette shown in the color picker:
 ],
 ```
 
+**Custom UI icon:**
+Customize the UI icon modal trigger:
+```php
+'icon' => 'heroicon-o-cog-6-tooth',
+```
+
 **Font Size Range:**
 Set the min and max values for the font size slider:
 ```php
