@@ -97,6 +97,14 @@ class UiPreferences extends Component
         return config('ui-switcher.fonts', ['Inter', 'Poppins', 'Roboto']);
     }
 
+     /**
+     * Get UI icon from config
+     */
+    public function getIconProperty(): string
+    {
+        return config('ui-switcher.icon', 'heroicon-o-cog-6-tooth');
+    }
+
     /**
      * Get custom colors from config
      */
