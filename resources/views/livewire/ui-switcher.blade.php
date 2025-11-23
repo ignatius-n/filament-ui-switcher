@@ -19,7 +19,7 @@
         aria-label="{{ __('filament-ui-switcher::filament-ui-switcher.button.aria_label') }}"
     >
         <x-filament::icon
-            icon="heroicon-o-cog-6-tooth"
+            icon="{{ $this->icon }}"
             class="h-5 w-5"
         />
     </button>
@@ -37,7 +37,7 @@
         <x-slot name="heading">
             <div class="flex items-center gap-2">
                 <x-filament::icon
-                    icon="heroicon-o-cog-6-tooth"
+                    icon="{{ $this->icon }}"
                     class="h-6 w-6"
                 />
                 <span class="text-lg font-semibold">{{ __('filament-ui-switcher::filament-ui-switcher.modal.heading') }}</span>
@@ -214,10 +214,11 @@
                 getGradient() {
                     const percent = ((this.fontSize - this.min) / (this.max - this.min)) * 100;
                     const isDark = document.documentElement.classList.contains('dark');
+                    const direction = document.documentElement.getAttribute('dir') === 'rtl' ? 'to left' : 'to right';
                     if (isDark) {
-                        return `linear-gradient(to right, rgba(167, 139, 250, 0.3) 0%, rgba(139, 92, 246, 0.7) ${percent / 2}%, rgb(139, 92, 246) ${percent}%, #374151 ${percent}%, #374151 100%)`;
+                        return `linear-gradient(${direction}, rgba(167, 139, 250, 0.3) 0%, rgba(139, 92, 246, 0.7) ${percent / 2}%, rgb(139, 92, 246) ${percent}%, #374151 ${percent}%, #374151 100%)`;
                     } else {
-                        return `linear-gradient(to right, rgba(139, 92, 246, 0.3) 0%, rgba(139, 92, 246, 0.6) ${percent / 2}%, rgb(124, 58, 237) ${percent}%, #e5e7eb ${percent}%, #e5e7eb 100%)`;
+                        return `linear-gradient(${direction}, rgba(139, 92, 246, 0.3) 0%, rgba(139, 92, 246, 0.6) ${percent / 2}%, rgb(124, 58, 237) ${percent}%, #e5e7eb ${percent}%, #e5e7eb 100%)`;
                     }
                 }
             }">
