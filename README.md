@@ -45,6 +45,9 @@ You can customize the colors, fonts, and more with the config file:
 ```bash
 # Publish config
 php artisan vendor:publish --tag=filament-ui-switcher-config
+
+# Publish translations
+php artisan vendor:publish --tag=filament-ui-switcher-translations
 ```
 
 This will create a `config/ui-switcher.php` file where you can customize:
@@ -86,6 +89,12 @@ Customize the color palette shown in the color picker:
     // Add your brand colors:
     // '#yourBrandColor',
 ],
+```
+
+**Custom UI icon:**
+Customize the UI icon modal trigger:
+```php
+'icon' => 'heroicon-o-cog-6-tooth',
 ```
 
 **Font Size Range:**
