@@ -1,10 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Andreia\FilamentUiSwitcher\Support;
 
 use Illuminate\Support\Facades\Auth;
 
-class UiPreferenceManager
+final class UiPreferenceManager
 {
     public static function get(string $key, $default = null)
     {
