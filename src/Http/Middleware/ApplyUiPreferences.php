@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Andreia\FilamentUiSwitcher\Http\Middleware;
 
 use Andreia\FilamentUiSwitcher\Support\UiPreferenceManager;
@@ -8,7 +10,7 @@ use Filament\Facades\Filament;
 use Filament\Support\Facades\FilamentColor;
 use Illuminate\Http\Request;
 
-class ApplyUiPreferences
+final class ApplyUiPreferences
 {
     public function handle(Request $request, Closure $next)
     {

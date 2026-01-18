@@ -1,11 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Andreia\FilamentUiSwitcher\Livewire;
 
 use Andreia\FilamentUiSwitcher\Support\UiPreferenceManager;
 use Livewire\Component;
 
-class UiPreferences extends Component
+final class UiPreferences extends Component
 {
     public bool $open = false;
 

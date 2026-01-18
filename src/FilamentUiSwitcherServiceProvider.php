@@ -3,6 +3,9 @@
 namespace Andreia\FilamentUiSwitcher;
 
 use Andreia\FilamentUiSwitcher\Livewire\UiPreferences as UiPreferencesLivewire;
+use Filament\Support\Assets\Css;
+use Filament\Support\Assets\Js;
+use Filament\Support\Facades\FilamentAsset;
 use Livewire\Livewire;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
@@ -15,8 +18,7 @@ class FilamentUiSwitcherServiceProvider extends PackageServiceProvider
             ->name('filament-ui-switcher')
             ->hasConfigFile('ui-switcher')
             ->hasViews()
-            ->hasTranslations()
-            ->hasAssets();
+            ->hasTranslations();
     }
 
     public function packageRegistered(): void
@@ -26,10 +28,16 @@ class FilamentUiSwitcherServiceProvider extends PackageServiceProvider
 
     public function packageBooted(): void
     {
+        // Register Livewire component
         Livewire::component('filament-ui-switcher', UiPreferencesLivewire::class);
+
+        FilamentAsset::register([
+            Css::make('ui-switcher-styles', __DIR__.'/../dist/ui-switcher.css'),
+            Js::make('ui-switcher-scripts', __DIR__.'/../dist/ui-switcher.js'),
+        ], package: 'andreia/filament-ui-switcher');
     }
 
-    public function boot()
+    public function boot(): void
     {
         parent::boot();
 

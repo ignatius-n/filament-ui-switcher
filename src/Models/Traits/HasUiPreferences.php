@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Andreia\FilamentUiSwitcher\Models\Traits;
 
 trait HasUiPreferences

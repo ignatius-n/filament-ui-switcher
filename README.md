@@ -24,8 +24,9 @@ Switch between the available Filament layouts with a customizable UI settings sl
 ## Requirements
 
 - PHP 8.2 or higher
-- Laravel 11.x or higher
-- Filament 4.1 or higher (required for "No Topbar" layout feature)
+- Laravel 11.x or 12.x
+- Filament 4.1+ or 5.x
+- Livewire 3.x or 4.x
 
 > **Note:** While the plugin technically works with Filament 4.0, the "No Topbar" layout option requires Filament 4.1+. Other layout options work on all Filament 4.x versions.
 
@@ -39,7 +40,19 @@ composer require andreia/filament-ui-switcher
 
 The package will auto-register via Laravel's package discovery.
 
-### 2. Publish Config
+### 2. Publish Assets
+
+This package uses Filament's asset management system. After installing, you need to publish the assets:
+
+```bash
+php artisan filament:assets
+```
+
+This will publish the CSS assets to `public/css/andreia/filament-ui-switcher/` where they will be automatically loaded by Filament and cached by your browser for better performance.
+
+> **Note:** If you update the package, run `php artisan filament:assets` again to get the latest assets.
+
+### 3. Publish Config
 
 You can customize the colors, fonts, and more with the config file:
 
@@ -57,7 +70,7 @@ This will create a `config/ui-switcher.php` file where you can customize:
 ```php
 'defaults' => [
     'font' => 'Inter',           // Default font family
-    'color' => '#6366f1',        // Default primary color
+    'color' => '#6366f1',      // Default primary color
     'layout' => 'sidebar',       // Default layout
     'font_size' => 16,           // Default font size in pixels
     'density' => 'default',      // Default UI density

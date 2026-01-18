@@ -4,9 +4,6 @@ namespace Andreia\FilamentUiSwitcher;
 
 use Filament\Contracts\Plugin;
 use Filament\Panel;
-use Filament\Support\Assets\Css;
-use Filament\Support\Assets\Js;
-use Filament\Support\Facades\FilamentAsset;
 use Filament\View\PanelsRenderHook;
 use Illuminate\Support\Facades\Blade;
 
@@ -46,12 +43,6 @@ class FilamentUiSwitcherPlugin implements Plugin
         $panel->middleware([
             \Andreia\FilamentUiSwitcher\Http\Middleware\ApplyUiPreferences::class,
         ], isPersistent: true);
-
-        // Register plugin assets
-        FilamentAsset::register([
-            Css::make('ui-switcher-styles', __DIR__.'/../dist/ui-switcher.css'),
-            Js::make('ui-switcher-scripts', __DIR__.'/../dist/ui-switcher.js'),
-        ], package: 'andreia/filament-ui-switcher');
 
         // Add cog icon to configured render hook (default: USER_MENU_BEFORE)
         // Livewire component is registered in ServiceProvider, so it's available here
