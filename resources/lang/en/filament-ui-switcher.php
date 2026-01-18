@@ -7,6 +7,10 @@ return [
 
     'loading.message' => 'Applying changes...',
 
+    'reset.button' => 'Reset all',
+    'reset.aria_label' => 'Reset all settings to default',
+    'reset.tooltip' => 'Reset all settings to default',
+
     'mode.heading' => 'Mode',
 
     'layout.heading' => 'Layout',
