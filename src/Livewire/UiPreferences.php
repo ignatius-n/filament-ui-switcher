@@ -90,6 +90,33 @@ class UiPreferences extends Component
     }
 
     /**
+     * Reset all preferences to default values from config
+     */
+    public function resetToDefaults(): void
+    {
+        $defaults = config('ui-switcher.defaults', []);
+
+        // Reset to config defaults
+        $this->font = $defaults['font'] ?? 'Inter';
+        $this->layout = $defaults['layout'] ?? 'sidebar';
+        $this->primaryColor = $defaults['color'] ?? '#6366f1';
+        $this->fontSize = $defaults['font_size'] ?? 16;
+        $this->density = $defaults['density'] ?? 'default';
+
+        // Save all preferences
+        UiPreferenceManager::set('ui.font', $this->font);
+        UiPreferenceManager::set('ui.layout', $this->layout);
+        UiPreferenceManager::set('ui.color', $this->primaryColor);
+        UiPreferenceManager::set('ui.font_size', $this->fontSize);
+        UiPreferenceManager::set('ui.density', $this->density);
+
+        // Dispatch event to reset theme/mode in localStorage (handled by JavaScript)
+        $this->dispatch('reset-theme-to-default');
+
+        $this->dispatch('reload-page');
+    }
+
+    /**
      * Get available fonts from config
      */
     public function getAvailableFontsProperty(): array

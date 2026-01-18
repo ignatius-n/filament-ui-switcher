@@ -9,7 +9,13 @@
             }, 400);
         }
      }"
-     x-on:reload-page.window="closeAndReload()">
+     x-on:reload-page.window="closeAndReload()"
+     x-on:reset-theme-to-default.window="
+        // Reset theme to system default
+        localStorage.removeItem('theme');
+        // Dispatch theme-changed event to update the UI
+        window.dispatchEvent(new CustomEvent('theme-changed', { detail: 'system' }));
+     ">
 
     {{-- Cog icon in topbar --}}
     <button
@@ -34,13 +40,35 @@
         x-on:close-modal.window="if ($event.detail.id === 'ui-switcher-modal') { $wire.set('open', false) }"
         x-on:modal-closed.window="if ($event.detail.id === 'ui-switcher-modal') { $wire.set('open', false) }"
     >
-        <x-slot name="heading">
+        <x-slot name="header">
+            {{-- Reset Button --}}
+            <button
+                wire:click="resetToDefaults"
+                wire:loading.class="opacity-50 cursor-wait"
+                wire:target="resetToDefaults"
+                type="button"
+                class="fi-icon-btn absolute end-[4.5rem] top-6 flex items-center justify-center text-gray-400 hover:text-gray-500 focus:outline-none dark:text-gray-500 dark:hover:text-gray-400 transition"
+                x-tooltip="{
+                    content: '{{ __('filament-ui-switcher::filament-ui-switcher.reset.button') }}',
+                    theme: $store.theme,
+                }"
+                aria-label="{{ __('filament-ui-switcher::filament-ui-switcher.reset.aria_label') }}"
+            >
+                <x-filament::icon
+                    icon="heroicon-o-arrow-path"
+                    class="h-5 w-5"
+                />
+            </button>
+
+            {{-- Header content --}}
             <div class="flex items-center gap-2">
                 <x-filament::icon
                     icon="{{ $this->icon }}"
                     class="h-6 w-6"
                 />
-                <span class="text-lg font-semibold">{{ __('filament-ui-switcher::filament-ui-switcher.modal.heading') }}</span>
+                <h2 class="fi-modal-heading">
+                    {{ __('filament-ui-switcher::filament-ui-switcher.modal.heading') }}
+                </h2>
             </div>
         </x-slot>
 

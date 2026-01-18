@@ -15,6 +15,7 @@ Switch between the available Filament layouts with a customizable UI settings sl
 - **Font Size** - Adjust base font size (12-20px)
 - **Layout** - Switch between Sidebar, Compact Sidebar, and Topbar navigation
 - **Mode (optional)** - Display Filament's mode switcher (dark, light, and system)
+- **Reset All** - Quickly reset all customizations to default values with a single click
 
 **Storage Options:**
 - **Session Storage** (default) - Preferences stored in user session
@@ -200,6 +201,20 @@ That's it! A ⚙️ settings icon will now appear in your topbar.
 ![Filament UI Switcher Screenshot](https://raw.githubusercontent.com/andreia/filament-ui-switcher/main/docs/screenshot.png)
 
 ![Filament UI Switcher Modal](https://raw.githubusercontent.com/andreia/filament-ui-switcher/main/docs/ui_switcher_modal.jpg)
+
+## Usage
+
+### Resetting Preferences
+
+The settings modal includes a reset button in the header that allows users to quickly restore all customizations to their default values. When clicked, it will reset:
+
+- Primary color
+- Font family
+- Font size  
+- Layout
+- Mode (dark/light/system)
+
+All preferences will be restored to the values defined in your `config/ui-switcher.php` file under the `defaults` key.
 
 ## Configuration
 
