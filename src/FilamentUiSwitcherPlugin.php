@@ -49,8 +49,8 @@ class FilamentUiSwitcherPlugin implements Plugin
 
         // Register plugin assets
         FilamentAsset::register([
-            Css::make('ui-switcher-styles', __DIR__ . '/../dist/ui-switcher.css'),
-            Js::make('ui-switcher-scripts', __DIR__ . '/../dist/ui-switcher.js'),
+            Css::make('ui-switcher-styles', __DIR__.'/../dist/ui-switcher.css'),
+            Js::make('ui-switcher-scripts', __DIR__.'/../dist/ui-switcher.js'),
         ], package: 'andreia/filament-ui-switcher');
 
         // Add cog icon to configured render hook (default: USER_MENU_BEFORE)
@@ -58,7 +58,7 @@ class FilamentUiSwitcherPlugin implements Plugin
         // Pass the mode switcher configuration to the component
         $panel->renderHook(
             $this->iconRenderHook,
-            fn (): string => Blade::render('@livewire(\'filament-ui-switcher\', [\'hasModeSwitcher\' => ' . ($this->hasModeSwitcher ? 'true' : 'false') . '])'),
+            fn (): string => Blade::render('@livewire(\'filament-ui-switcher\', [\'hasModeSwitcher\' => '.($this->hasModeSwitcher ? 'true' : 'false').'])'),
         );
 
         // Inject font size CSS
