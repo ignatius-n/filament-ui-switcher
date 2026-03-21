@@ -40,7 +40,7 @@ class FilamentUiSwitcherPlugin implements Plugin
     public function register(Panel $panel): void
     {
         // Register custom middleware to apply preferences after session is available
-        $panel->middleware([
+        $panel->authMiddleware([
             \Andreia\FilamentUiSwitcher\Http\Middleware\ApplyUiPreferences::class,
         ], isPersistent: true);
 
