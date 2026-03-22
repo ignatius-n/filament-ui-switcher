@@ -2,6 +2,8 @@
 
 namespace Andreia\FilamentUiSwitcher;
 
+use Andreia\FilamentUiSwitcher\Http\Middleware\ApplyUiPreferences;
+use Andreia\FilamentUiSwitcher\Support\UiPreferenceManager;
 use Filament\Contracts\Plugin;
 use Filament\Panel;
 use Filament\View\PanelsRenderHook;
@@ -41,7 +43,7 @@ class FilamentUiSwitcherPlugin implements Plugin
     {
         // Register custom middleware to apply preferences after session is available
         $panel->authMiddleware([
-            \Andreia\FilamentUiSwitcher\Http\Middleware\ApplyUiPreferences::class,
+            ApplyUiPreferences::class,
         ], isPersistent: true);
 
         // Add cog icon to configured render hook (default: USER_MENU_BEFORE)
@@ -56,7 +58,7 @@ class FilamentUiSwitcherPlugin implements Plugin
         $panel->renderHook(
             PanelsRenderHook::HEAD_END,
             function (): string {
-                $fontSize = \Andreia\FilamentUiSwitcher\Support\UiPreferenceManager::get('ui.font_size', 16);
+                $fontSize = UiPreferenceManager::get('ui.font_size', 16);
 
                 return <<<HTML
                 <style>
